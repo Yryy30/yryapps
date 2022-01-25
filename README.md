@@ -1,1 +1,1 @@
-<img src="yryp.png">
+<img src="public/yryp.png">
