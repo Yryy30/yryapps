@@ -31,7 +31,22 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->match(['get', 'post'], 'login', 'UserController::login', ["filter" => "noauth"]);
+// Admin routes
+$routes->group("admin", ["filter" => "auth"], function ($routes) {
+    $routes->get("/", "AdminController::index");
+    
+    //Pengguna
+    //$routes->get("pengguna", "AdminController::pengguna");
+    //$routes->get("form-pengguna", "AdminController::formPengguna");
+    //$routes->match(["get", "post"], "add-pengguna", "AdminController::addPengguna");
+    //$routes->get("delete-pengguna/(:num)","AdminController::deletePengguna/$1");
+});
+// Editor routes
+$routes->group("operator", ["filter" => "auth"], function ($routes) {
+    $routes->get("/", "OperatorController::index");
+});
+$routes->get('logout', 'UserController::logout');
 
 /*
  * --------------------------------------------------------------------

@@ -6,6 +6,6 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view('admin/vw_dashboard');
+        return view('vw_login');
     }
 }
