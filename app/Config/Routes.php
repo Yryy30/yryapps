@@ -36,11 +36,11 @@ $routes->match(['get', 'post'], 'login', 'UserController::login', ["filter" => "
 $routes->group("admin", ["filter" => "auth"], function ($routes) {
     $routes->get("/", "AdminController::index");
     
-    //Pengguna
-    //$routes->get("pengguna", "AdminController::pengguna");
-    //$routes->get("form-pengguna", "AdminController::formPengguna");
-    //$routes->match(["get", "post"], "add-pengguna", "AdminController::addPengguna");
-    //$routes->get("delete-pengguna/(:num)","AdminController::deletePengguna/$1");
+    //Users
+    $routes->get("list-users", "AdminController::listUsers");
+    $routes->get("form-users", "AdminController::formUsers");
+    $routes->match(["get", "post"], "add-users", "AdminController::addUsers");
+    //$routes->get("delete-users/(:num)","AdminController::deleteUsers/$1");
 });
 // Editor routes
 $routes->group("operator", ["filter" => "auth"], function ($routes) {
